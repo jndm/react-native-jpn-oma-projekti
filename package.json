@@ -1,5 +1,5 @@
 {
-  "name": "jpnomasovellus",
+  "name": "jpsovellus",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -20,10 +20,8 @@
   },
   "dependencies": {
     "expo": "^22.0.2",
-    "react": "^16.1.1",
+    "react": "16.0.0-beta.5",
     "react-native": "^0.49.5",
-    "react-native-gesture-handler": "^1.0.0-alpha.32",
-    "react-native-tab-view": "0.0.70",
     "react-navigation": "^1.0.0-beta.21"
   }
 }

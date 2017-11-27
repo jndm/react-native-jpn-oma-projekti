@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 
-export default ({text}) => {
+export default ({text, onPress}) => {
 	const { buttonStyle, buttonText } = styles;
 	return (
-		<TouchableOpacity style={buttonStyle} activeOpacity={0.8}>
+		<TouchableOpacity onPress={onPress} style={buttonStyle} activeOpacity={0.8}>
 			<Text style={buttonText}>{text}</Text>
 		</TouchableOpacity>
 	);

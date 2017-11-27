@@ -1,49 +1,61 @@
-import React, { PureComponent } from 'react';
-import { View, StyleSheet, Dimensions } from 'react-native';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
+import React from 'react';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { INITIAL_WEIGHT_SCREEN } from '../Navigation/Routes';
 
-import Tab1 from './tab1';
-import Tab2 from './tab2';
+export default class MainScreen extends React.Component {
+	constructor(props) {
+		super(props);
+	}
 
-const initialLayout = {
-  height: 0,
-  width: Dimensions.get('window').width,
-};
+	async componentWillMount() {
+		try {
+			const data = await AsyncStorage.getItem('Program');
+			if (data) {
+				data = JSON.parse(data);
+				this.setState({ data });
+			}
+		} catch (error) {
+			console.log('ERROR' + error);
+		}
+	}
 
-export default class TabViewExample extends PureComponent {
-  state = {
-    index: 0,
-    routes: [
-      { key: 'first', title: 'First' },
-      { key: 'second', title: 'Second' },
-    ],
-  };
+	renderCards() {
+		var list = [];
+		//const { group1, group2 } = this.state.program;
+		console.log('STATE');
+		console.log(this.state);
+		// console.log(this.state.program.group1.length);
 
-  _handleIndexChange = index => this.setState({ index });
+		return <Text>moroo</Text>;
+		// if (this.state.program.group1.length === 0) {
+		// 	return;
+		// }
 
-  _renderHeader = props => <TabBar {...props} />;
+		// for (var i = 0; i < 6; i++) {
+		// 	list.push(
+		// 		<View>
+		// 			<Text>{'Kyykky: ' + this.state.program.group1[i].backsquat.weight1 + 'kg'}</Text>
+		// 			<Text>{'Mave: ' + this.state.program.group1[i].deadlift.weight1 + 'kg'}</Text>
+		// 		</View>
+		// 	);
+		// 	list.push(
+		// 		<View>
+		// 			<Text>{'Penkki: ' + this.state.program.group2[i].benchPress.weight1 + 'kg'}</Text>
+		// 			<Text>{'Pystäri: ' + this.state.program.group2[i].ohp.weight1 + 'kg'}</Text>
+		// 		</View>
+		// 	);
+		// }
 
-  _renderScene = SceneMap({
-    first: Tab1,
-    second: Tab2,
-  });
+	}
 
-  render() {
-    return (
-      <TabViewAnimated
-        style={styles.container}
-        navigationState={this.state}
-        renderScene={this._renderScene}
-        renderHeader={this._renderHeader}
-        onIndexChange={this._handleIndexChange}
-        initialLayout={initialLayout}
-      />
-    );
-  }
+	render() {
+		const { navigate } = this.props.navigation;
+		return (
+			<View>
+				<Text>moro</Text>
+				{this.renderCards()}
+				<Button title="moro" onPress={() => navigate(INITIAL_WEIGHT_SCREEN)} />
+			</View>
+		);
+	}
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

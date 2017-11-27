@@ -1,14 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import LandingScreen from './src/landing-screen/LandingScreen'
 
-import MainScreen from './src/MainScreen/index'
+import Navigator from './src/Navigation/Navigator'
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <MainScreen />
+        <Navigator />
       </View>
     );
   }
